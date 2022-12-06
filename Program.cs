@@ -1,21 +1,30 @@
 class Program
 {
+    public const int IsPartTime = 1;
+    public const int IsFullTime = 2;
+    public const int EmpRatePerHour = 3;
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
-        int IS_FULL_TIME = 1;
-        Random random = new Random();
-
-        int empCheck = random.Next(0,2);
-        if (empCheck == IS_FULL_TIME)
+        int empHrs = 0;
+        int empWage = 0;
+        Random random= new Random();
+        //Computation
+        int empCheck =random.Next(0,3);
+        switch(empCheck)
         {
-            Console.WriteLine("Employee is Present");
+            case IsPartTime: 
+                empHrs = 4;
+                break; 
+
+            case IsFullTime:
+                 empHrs= 5;
+                break;
+            default: 
+                empHrs = 0;
+                break;
 
         }
-        else
-        {
-            Console.WriteLine("Employee is Absent");
-
-        }
+        empWage = empHrs * EmpRatePerHour;
+        Console.WriteLine("Emp Wage:" + empWage);
     }
 }
