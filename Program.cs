@@ -1,19 +1,20 @@
+
+
+
  class Program
 {
     public const int IsPartTime = 1;
     public const int IsFullTime = 2;
     public const int EmpRatePerHour = 20;
     public const int NumOfWorkingDays = 2;
+    public const int MaxHrsInMonth = 10;
 
     static void Main(string[] args)
     {
-        int empHrs = 0;
-        int empWage = 0;
-        int totalEmpWage = 0;
-
-         for (int day =0; day < NumOfWorkingDays; day++)
+        int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
+        while (totalEmpHrs <= MaxHrsInMonth && totalWorkingDays < NumOfWorkingDays )
         {
-
+            totalWorkingDays++;
             Random random = new Random();
             int empCheck = random.Next(0, 3);
             switch (empCheck)
@@ -27,14 +28,13 @@
                 default:
                     empHrs = 0;
                     break;
-
-
             }
-            empWage = empHrs * EmpRatePerHour;
-            totalEmpWage += empWage;
-            Console.WriteLine("EmpWage:" + empWage);
+            totalEmpHrs += empHrs;
+            Console.WriteLine("Day#:" + totalWorkingDays + "Emp Hrs:" + empHrs);
 
         }
-        Console.WriteLine("Total Emp Wage :" + totalEmpWage);
+        int totalEmpWage = totalEmpHrs * EmpRatePerHour;
+        Console.WriteLine("Total Emp Wage:" + totalEmpWage);
+        
     }
 }
